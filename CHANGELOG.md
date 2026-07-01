@@ -2,6 +2,11 @@
 
 All notable changes to `enhance` are documented here.
 
+## [Unreleased]
+
+### Changed
+- `--go` one-shot flag is now position-independent (start or end of the request), so a keyboard shortcut can prefill it.
+
 ## [0.0.1] - 2026-06-30
 
 ### Added

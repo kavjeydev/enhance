@@ -14,11 +14,11 @@ Turn my rough ask into a precise, structured prompt — grounded in this session
 ## Mode
 
 - **Default: review-then-run.** Rewrite, print, stop, wait for `go`.
-- **One-shot:** if `$ARGUMENTS` ends with ` --go`, strip the flag, skip the review, and execute immediately.
+- **One-shot:** if `$ARGUMENTS` includes a `--go` flag (at the start or the end), remove it, skip the review, and execute the rewritten prompt immediately.
 
 ## Steps
 
-1. Treat `$ARGUMENTS` (minus any trailing `--go`) as my rough ask.
+1. Treat `$ARGUMENTS` as my rough ask — first strip a `--go` flag if it appears at the start or end (it only selects one-shot mode and is not part of the request).
 2. Rewrite it into the structure defined in [TEMPLATE.md](TEMPLATE.md). To fill it in:
    - Pull **Context** and **Inputs available** from the current conversation.
    - Actively read the codebase — glob for relevant files, grep for symbols, read what matters.

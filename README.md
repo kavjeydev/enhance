@@ -62,10 +62,10 @@ Then type `/enhance` in Claude Code.
 
 `enhance` inspects your session and repo, prints an enhanced prompt in a delimited block, and **stops**. Review it, then reply `go` — or edit any section first.
 
-One-shot (skip the review, run immediately):
+One-shot (skip the review, run immediately) — put `--go` at the start or end:
 
 ```
-/enhance fix the flaky test in the checkout flow --go
+/enhance --go fix the flaky test in the checkout flow
 ```
 
 ## Auto-mode (optional)
@@ -159,13 +159,17 @@ Full versions live in [`examples/before-after.md`](examples/before-after.md).
 
 ## Pair it with a shortcut
 
-Bind a key to type the command for you. In your Ghostty config (`~/.config/ghostty/config`):
+Bind keys to type the command for you. In your Ghostty config (`~/.config/ghostty/config`):
 
 ```
 keybind = cmd+e=text:/enhance 
+keybind = cmd+shift+e=text:/enhance --go 
 ```
 
-Now `⌘E` drops `/enhance ` into the prompt with the cursor ready — start typing your rough ask.
+- `⌘E` → `/enhance ` (review-then-run) — cursor ready, start typing.
+- `⌘⇧E` → `/enhance --go ` (one-shot) — same, but skips the review.
+
+Keep the **trailing space** after `/enhance` and `--go` so your text doesn't run into the command. Reload Ghostty with `⌘⇧,` (or restart) to apply.
 
 ## Works beyond Claude Code
 
