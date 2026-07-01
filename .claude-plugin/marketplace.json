@@ -1,0 +1,17 @@
+{
+  "name": "enhance",
+  "owner": {
+    "name": "kavjeydev"
+  },
+  "metadata": {
+    "description": "Marketplace for the enhance prompt-enhancer skill.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "enhance",
+      "source": "./",
+      "description": "Session- and codebase-aware prompt enhancer with review-before-run."
+    }
+  ]
+}

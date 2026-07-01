@@ -1,0 +1,11 @@
+{
+  "name": "enhance",
+  "version": "1.0.0",
+  "description": "Personal prompt-enhancer: rewrites a rough request into a structured, session- and codebase-aware prompt, then reviews it before running.",
+  "author": {
+    "name": "kavjeydev"
+  },
+  "homepage": "https://github.com/kavjeydev/enhance",
+  "license": "MIT",
+  "keywords": ["prompt", "prompt-engineering", "skill", "claude-code", "productivity"]
+}
