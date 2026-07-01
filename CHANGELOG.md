@@ -2,7 +2,7 @@
 
 All notable changes to `enhance` are documented here.
 
-## [Unreleased]
+## [0.0.2] - 2026-06-30
 
 ### Changed
 - **Inverted the default.** `/enhance` now rewrites *and runs* the prompt by default. Pass the new `--check` flag (at the start or end of the request) to review and approve the prompt before it runs. Replaces the old `--go` one-shot flag.

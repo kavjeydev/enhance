@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Marketplace for the enhance prompt-enhancer skill.",
-    "version": "0.0.1"
+    "version": "0.0.2"
   },
   "plugins": [
     {
