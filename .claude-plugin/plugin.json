@@ -1,6 +1,6 @@
 {
   "name": "enhance",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Personal prompt-enhancer: rewrites a rough request into a structured, session- and codebase-aware prompt, then reviews it before running.",
   "author": {
     "name": "kavjeydev"

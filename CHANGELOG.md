@@ -2,7 +2,7 @@
 
 All notable changes to `enhance` are documented here.
 
-## [1.0.0] - 2026-06-30
+## [0.0.1] - 2026-06-30
 
 ### Added
 - `enhance` skill: rewrites a rough request into a structured, session- and codebase-aware prompt.

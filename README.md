@@ -12,6 +12,23 @@ Generic "improve my prompt" tools rewrite text in a vacuum and fire immediately.
 - **Codebase-aware** — it globs, greps, reads files, and checks live git state to ground the prompt in reality.
 - **Review-before-run** — it prints the rewritten prompt and stops. Nothing executes until you confirm. (Append `--go` to skip the review when you're in a hurry.)
 
+## When to use it (and when not)
+
+`enhance` does **not** make Claude smarter about vague prompts — it's the same model doing the same analysis it would do anyway. What it adds is a **checkpoint**: it writes down its interpretation of your ask and waits, so you can fix a misread *before* any work happens instead of undoing it after.
+
+**Reach for it when:**
+
+- The task is **expensive or hard to undo** — a big refactor, a migration, something touching many files. Catching a wrong assumption up front pays for itself.
+- You want the enhanced prompt as a **reusable artifact** — to save, reuse, or hand to another tool or a weaker model.
+- You **know you under-specify** and would rather front-load the correction.
+
+**Skip it when:**
+
+- The task is **small, cheap, or reversible** — just let Claude run and correct it midstream. That's faster.
+- The prompt is only **ambiguous** — Claude already asks a clarifying question on its own when something is genuinely unclear, with less ceremony than a full rewrite.
+
+It's a control tool, not an intelligence upgrade. On the right slice of tasks it saves a correction round-trip; on everything it's just friction.
+
 ## Install (20 seconds)
 
 **Option A — Claude Code plugin marketplace**
@@ -153,6 +170,15 @@ Now `⌘E` drops `/enhance ` into the prompt with the cursor ready — start typ
 ## Works beyond Claude Code
 
 `enhance` follows the open [Agent Skills](https://www.anthropic.com/engineering/skills) standard — a plain `SKILL.md` with YAML frontmatter. The same skill works in **Codex**, **Cursor**, and **claude.ai**. Write it once, use it everywhere.
+
+## Feedback & contributing
+
+Questions, feedback, and change requests are welcome:
+
+- **[Open an issue](https://github.com/kavjeydev/enhance/issues)** — bugs, ideas, or requests.
+- **[Start a discussion](https://github.com/kavjeydev/enhance/discussions)** — questions and open-ended feedback.
+
+PRs welcome too — it's a single `SKILL.md` plus a template, easy to fork and tweak.
 
 ## License
 
