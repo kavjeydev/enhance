@@ -1,33 +1,37 @@
 # enhance
 
-**Type a rough request. Get a structured, high-signal prompt — reviewed before it runs.**
+**Type a rough request. Get a structured, high-signal prompt built from your live session and codebase — then run it.**
 
-`/enhance` is a personal prompt-enhancer for Claude Code. You give it a half-formed ask; it rewrites that into a precise, structured prompt using your **live session** and your **actual codebase**, shows you the result, and only executes once you reply `go`.
+`/enhance` is a personal prompt-enhancer for Claude Code. You give it a half-formed ask; it rewrites that into a precise, structured prompt using your **live session** and your **actual codebase**, then runs it. Want to eyeball the prompt first? Add `--check` and it waits for your `go`.
 
 ## What makes it different
 
-Generic "improve my prompt" tools rewrite text in a vacuum and fire immediately. `enhance` is:
+Generic "improve my prompt" tools rewrite text in a vacuum. `enhance` is:
 
 - **Session-aware** — it reads the current conversation for context.
 - **Codebase-aware** — it globs, greps, reads files, and checks live git state to ground the prompt in reality.
-- **Review-before-run** — it prints the rewritten prompt and stops. Nothing executes until you confirm. (Append `--go` to skip the review when you're in a hurry.)
+- **Review on demand** — it runs the rewritten prompt by default, but add `--check` to inspect and approve it first. Most rewriters give you no gate at all.
 
 ## When to use it (and when not)
 
-`enhance` does **not** make Claude smarter about vague prompts — it's the same model doing the same analysis it would do anyway. What it adds is a **checkpoint**: it writes down its interpretation of your ask and waits, so you can fix a misread *before* any work happens instead of undoing it after.
+`enhance` doesn't make Claude smarter — it's the same model doing the same analysis. What it adds is a **structured rewrite** of your ask (grounded in your session and codebase), plus an optional **checkpoint** (`--check`) to approve that rewrite before any work starts.
 
-**Reach for it when:**
+**The default (rewrite-and-run) helps when:**
 
-- The task is **expensive or hard to undo** — a big refactor, a migration, something touching many files. Catching a wrong assumption up front pays for itself.
-- You want the enhanced prompt as a **reusable artifact** — to save, reuse, or hand to another tool or a weaker model.
-- You **know you under-specify** and would rather front-load the correction.
+- Your ask is rough and a cleaner, structured version gets a better first result.
+- You want the rewrite but trust it enough to just let it go.
 
-**Skip it when:**
+**Reach for `--check` when:**
 
-- The task is **small, cheap, or reversible** — just let Claude run and correct it midstream. That's faster.
-- The prompt is only **ambiguous** — Claude already asks a clarifying question on its own when something is genuinely unclear, with less ceremony than a full rewrite.
+- The task is **expensive or hard to undo** — a big refactor, a migration, something touching many files. Approving the interpretation up front beats undoing a misread.
+- You want the enhanced prompt as a **reusable artifact** before it runs.
 
-It's a control tool, not an intelligence upgrade. On the right slice of tasks it saves a correction round-trip; on everything it's just friction.
+**Skip `/enhance` entirely when:**
+
+- The task is **small, cheap, or reversible** — just tell Claude directly; the rewrite is overhead.
+- The prompt is only **ambiguous** — Claude already asks a clarifying question on its own when something is genuinely unclear.
+
+The rewrite is a modest boost; the `--check` gate is where the real control is. On the right tasks it saves a correction round-trip; on trivial ones it's just friction.
 
 ## Install (20 seconds)
 
@@ -60,12 +64,12 @@ Then type `/enhance` in Claude Code.
 /enhance fix the flaky test in the checkout flow
 ```
 
-`enhance` inspects your session and repo, prints an enhanced prompt in a delimited block, and **stops**. Review it, then reply `go` — or edit any section first.
+`enhance` inspects your session and repo, shows the enhanced prompt, and **runs it**.
 
-One-shot (skip the review, run immediately) — put `--go` at the start or end:
+Want to approve the prompt first? Add `--check` (at the start or end) and it stops and waits for your `go`:
 
 ```
-/enhance --go fix the flaky test in the checkout flow
+/enhance --check fix the flaky test in the checkout flow
 ```
 
 ## Auto-mode (optional)
@@ -163,13 +167,13 @@ Bind keys to type the command for you. In your Ghostty config (`~/.config/ghostt
 
 ```
 keybind = cmd+e=text:/enhance 
-keybind = cmd+shift+e=text:/enhance --go 
+keybind = cmd+shift+e=text:/enhance --check 
 ```
 
-- `⌘E` → `/enhance ` (review-then-run) — cursor ready, start typing.
-- `⌘⇧E` → `/enhance --go ` (one-shot) — same, but skips the review.
+- `⌘E` → `/enhance ` (rewrite-and-run) — cursor ready, start typing.
+- `⌘⇧E` → `/enhance --check ` (review) — same, but stops for your `go` first.
 
-Keep the **trailing space** after `/enhance` and `--go` so your text doesn't run into the command. Reload Ghostty with `⌘⇧,` (or restart) to apply.
+Keep the **trailing space** after `/enhance` and `--check` so your text doesn't run into the command. Reload Ghostty with `⌘⇧,` (or restart) to apply.
 
 ## Works beyond Claude Code
 

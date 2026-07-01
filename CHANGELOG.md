@@ -5,7 +5,7 @@ All notable changes to `enhance` are documented here.
 ## [Unreleased]
 
 ### Changed
-- `--go` one-shot flag is now position-independent (start or end of the request), so a keyboard shortcut can prefill it.
+- **Inverted the default.** `/enhance` now rewrites *and runs* the prompt by default. Pass the new `--check` flag (at the start or end of the request) to review and approve the prompt before it runs. Replaces the old `--go` one-shot flag.
 
 ## [0.0.1] - 2026-06-30
 

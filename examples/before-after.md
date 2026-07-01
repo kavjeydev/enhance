@@ -1,6 +1,6 @@
 # Before / after
 
-Three realistic rewrites. The **before** is what you'd normally type. The **after** is what `/enhance` produces after reading your session and codebase — then it stops and waits for `go`.
+Three realistic rewrites. The **before** is what you'd normally type. The **after** is the structured prompt `/enhance` builds from your session and codebase — which it then **runs** (or, with `--check`, shows you first and waits for `go`).
 
 ---
 
@@ -51,7 +51,7 @@ cookie isn't persisting and fix it.
 ===========================
 ```
 
-Reply `go` to run it, or edit any section first.
+*By default `/enhance` runs this; add `--check` to stop here and wait for your `go`.*
 
 ---
 
@@ -101,7 +101,7 @@ Write unit tests for `parseCsv()` in `src/parser/csv.ts`.
 ===========================
 ```
 
-Reply `go` to run it, or edit any section first.
+*By default `/enhance` runs this; add `--check` to stop here and wait for your `go`.*
 
 ---
 
@@ -152,4 +152,4 @@ Rewrite `README.md` so a new user understands the project and installs it within
 ===========================
 ```
 
-Reply `go` to run it, or edit any section first.
+*By default `/enhance` runs this; add `--check` to stop here and wait for your `go`.*
